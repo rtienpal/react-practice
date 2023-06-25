@@ -1,6 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search"
 import CloseIcon from "@mui/icons-material/Close"
 import { projectIdList } from "../api/customer-list"
+import { customerList } from "../api/customer-list"
 import React from "react"
 
 export default function SearchBar({ setChosenProjectId }) {
@@ -8,8 +9,8 @@ export default function SearchBar({ setChosenProjectId }) {
   const [searchWord, setSearchWord] = React.useState("")
   
 
-  const handleFilter = (event) => {
-    const searchWord = event.target.value
+  const handleFilter = (e) => {
+    const searchWord = e.target.value
     setSearchWord(searchWord)
     let newFilter = []
     if (searchWord) {
@@ -31,7 +32,6 @@ export default function SearchBar({ setChosenProjectId }) {
         <input
           className="input"
           type="text"
-          //placeholder={placeholder}
           onChange={handleFilter}
           name="projectId"
           value={searchWord}
@@ -53,10 +53,7 @@ export default function SearchBar({ setChosenProjectId }) {
                 key={key}
                 onClick={() => {
                   setChosenProjectId(projectId)
-
-                  // setChosenCity(city.apiCityId)
-                  // handleClickCity()
-                  // clearSearchWord()
+                  console.log(customerList.filter((elem) => elem.projectId === projectId))
                 }}
               >
                 {`${projectId}`}

@@ -1,4 +1,4 @@
-const customerList = [
+export const customerList = [
   {
     _id: "648b7c40fa5600586a25a00e",
     createdAt: 1686862912671,
@@ -83498,7 +83498,3 @@ const regex = /.*prd$/
 
 export const projectIdList = customerList.filter((customer) => regex.test(customer.projectId))
     .map((customer) => customer.projectId);
-
-
-console.log(projectIdList)
-
