@@ -1,13 +1,16 @@
 import SearchIcon from "@mui/icons-material/Search"
 import CloseIcon from "@mui/icons-material/Close"
-import { projectIdList } from "../api/customer-list"
-import { customerList } from "../api/customer-list"
 import React from "react"
+import { getProjectIdList } from "../../services/requestApiCloud"
 
-export default function SearchBar({ setChosenProjectId }) {
+export default function SearchBar({ correctToken, setChosenProjectId }) {
   const [filteredData, setFilteredData] = React.useState([])
   const [searchWord, setSearchWord] = React.useState("")
-  
+  const [projectIdList, setProjectIdList] = React.useState([])
+
+  React.useEffect(() => {
+    getProjectIdList(correctToken, setProjectIdList)
+  }, [projectIdList])
 
   const handleFilter = (e) => {
     const searchWord = e.target.value
@@ -26,9 +29,13 @@ export default function SearchBar({ setChosenProjectId }) {
     setSearchWord("")
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   return (
-    <form>
-      <div className="searchInputs">
+    <form onSubmit={handleSubmit}>
+      <div className="searchInput">
         <input
           className="input"
           type="text"
@@ -53,7 +60,7 @@ export default function SearchBar({ setChosenProjectId }) {
                 key={key}
                 onClick={() => {
                   setChosenProjectId(projectId)
-                  console.log(customerList.filter((elem) => elem.projectId === projectId))
+                  
                 }}
               >
                 {`${projectId}`}
