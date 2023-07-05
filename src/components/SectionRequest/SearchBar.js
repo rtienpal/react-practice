@@ -10,7 +10,7 @@ export default function SearchBar({ correctToken, setChosenProjectId }) {
 
   React.useEffect(() => {
     getProjectIdList(correctToken, setProjectIdList)
-  }, [projectIdList])
+  }, [])
 
   const handleFilter = (e) => {
     const searchWord = e.target.value
