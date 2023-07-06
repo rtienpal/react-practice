@@ -49,6 +49,7 @@ export default function TokenPage({ setCorrectToken }) {
             name="token"
             value={searchToken}
             onChange={handleFilter}
+            placeholder="Liferay Cloud Token"
           ></input>
           <div className="searchIcon">
             {searchToken ? (

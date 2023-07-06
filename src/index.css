@@ -9,7 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
 code {
@@ -20,30 +19,35 @@ code {
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .searchInput {
   display: flex;
+  align-items: center;
 }
 
- .input {
+.input {
   width: 300px;
   height: 40px;
   padding: 2px 10px;
-  background-color: gray; /* important to be same as searchIcon background-color */
-  border: 0;
+  background-color: gray;
+  border: none;
+  font-size: 14px;
+  color: white;
 }
 
 .input:focus {
-  outline: none !important;
+  outline: none;
 }
 
 .searchIcon {
-  background-color: gray; /* important to be same as input background-color */
+  background-color: gray;
   width: 50px;
-  height: auto;
-  place-items: center;
-  display: grid;
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #closeBtn {
@@ -61,5 +65,28 @@ form {
 }
 
 .submitButton:hover {
-  background-color: darkgray;
+  background-color: lightgray;
+}
+
+.dataResults {
+  display: flex;
+  flex-direction: column;
+  max-height: 160px;
+  overflow-y: auto;
+  background-color: lightgray;
+  width: 350px;
+  position: absolute;
+  margin-top: 40px;
+  padding: 0 10px 5px;
+}
+
+.dataResult {
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+.dataResult:hover,
+.dataResult.selected {
+  background-color: gray;
+  color: white;
 }
